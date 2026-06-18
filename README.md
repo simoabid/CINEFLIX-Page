@@ -39,7 +39,7 @@ A premium, Netflix-inspired landing page for the CINEFLIX mobile app — featuri
 
 <br>
 
-<img src="assets/screenshots/home.jpg" alt="CINEFLIX Preview" width="280" style="border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+<img src="assets/screenshots/landing_page.png" alt="CINEFLIX Preview" width="800" style="border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
 
 </div>
 
