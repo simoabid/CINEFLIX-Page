@@ -1,20 +1,20 @@
 <div align="center">
 
-<img src="assets/logo.png" alt="CINEFLIX Logo" width="120" height="120">
+<img src="public/assets/logo.png" alt="CINEFLIX Logo" width="120" height="120">
 
 # CINEFLIX — Landing Page
 
 ### Your Cinematic Universe, Reinvented
 
-A premium, Netflix-inspired landing page for the CINEFLIX mobile app — featuring glassmorphism UI, particle animations, 3D tilt effects, and a fully responsive dark-mode design.
+A premium, Netflix-inspired landing page for the CINEFLIX mobile app — rebuilt with a modern frontend stack featuring React, Vite, Tailwind CSS, TypeScript, and Vitest.
 
 <br>
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Google Fonts](https://img.shields.io/badge/Google_Fonts-4285F4?style=for-the-badge&logo=google-fonts&logoColor=white)
-![Devicon](https://img.shields.io/badge/Devicon-Icons-000?style=for-the-badge)
+![React](https://img.shields.io/badge/React-18.2-blue?style=for-the-badge&logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-4.4-purple?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-3.3-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-4.1-yellow?style=for-the-badge&logo=vitest&logoColor=black)
 
 <br>
 
@@ -39,7 +39,7 @@ A premium, Netflix-inspired landing page for the CINEFLIX mobile app — featuri
 
 <br>
 
-<img src="assets/screenshots/landing_page.png" alt="CINEFLIX Preview" width="800" style="border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+<img src="public/assets/screenshots/landing_page.png" alt="CINEFLIX Preview" width="800" style="border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
 
 </div>
 
@@ -72,7 +72,7 @@ A premium, Netflix-inspired landing page for the CINEFLIX mobile app — featuri
 
 ## Overview
 
-**CINEFLIX** is a premium landing page for a Netflix-inspired movie & TV companion app built with React Native + Expo. This landing page showcases the mobile app with a dark-mode glassmorphism aesthetic, advanced CSS animations, and interactive JavaScript features — all without any frameworks or dependencies.
+**CINEFLIX** is a premium landing page for a Netflix-inspired movie & TV companion app. This landing page has been migrated from a legacy single-file setup into a modern, production-ready frontend project using **React 18, Vite, TypeScript, and Tailwind CSS**. It showcases the mobile app's screens using a floating liquid-glass theme, canvas animations, and a client-side search simulation grid, backed by a comprehensive Vitest test suite.
 
 > **6,400+ collections** · **16 genre filters** · **100% free** · **Infinite movies & TV shows**
 
@@ -84,14 +84,14 @@ A premium, Netflix-inspired landing page for the CINEFLIX mobile app — featuri
 <tr>
 <td width="50%">
 
-**Zero Dependencies**
-Pure HTML, CSS, and vanilla JS. No build tools, no frameworks, no npm install. Just open `index.html`.
+**Modern Tooling**
+Fast compilation and bundling with Vite, strict type safety with TypeScript, and easy utility-first styles with Tailwind CSS.
 
 </td>
 <td width="50%">
 
 **Production Ready**
-Fully responsive across all devices, optimized for performance, and accessible with WCAG best practices.
+Fully responsive layouts, optimized asset delivery, clear SEO structures, and automated tests.
 
 </td>
 </tr>
@@ -99,13 +99,13 @@ Fully responsive across all devices, optimized for performance, and accessible w
 <td>
 
 **Premium Design**
-Glassmorphism UI, particle animations, 3D tilt effects, custom cursor, scroll-driven phone mockup, and staggered reveal animations.
+Floating glass header, interactive mouse glow parallax, spring-interpolated custom cursor, and canvas-based hero particle fields.
 
 </td>
 <td>
 
-**SEO Optimized**
-Structured data (JSON-LD), Open Graph tags, Twitter Cards, semantic HTML, and meta descriptions built in.
+**Automated Testing**
+Includes 20 passing unit and integration tests verifying all interactive user flows.
 
 </td>
 </tr>
@@ -121,72 +121,39 @@ Structured data (JSON-LD), Open Graph tags, Twitter Cards, semantic HTML, and me
 
 | Feature | Description |
 |---------|-------------|
-| **Glassmorphism UI** | Translucent cards, modals, inputs, and chips with backdrop blur |
-| **Deep Navy Dark Mode** | `#0A0A1F` primary background with `#E50914` Netflix-red accent |
-| **Particle System** | Canvas-based floating particles with connecting lines in the hero |
-| **3D Tilt Cards** | Mouse-tracking perspective transforms on screenshot cards |
-| **Custom Cursor** | Spring-interpolated dot + ring cursor with hover state expansion |
-| **Gradient Text** | Animated red gradient text for headings and accent words |
-| **Scroll Progress** | Fixed top bar showing page scroll percentage |
-| **Phone Mockup** | Scroll-driven screenshot switcher inside a realistic phone frame |
+| **Floating Liquid Glass** | Translucent inner nav container with backdrop blur, transitioning its borders and opacity dynamically on scroll. |
+| **Deep Navy Dark Mode** | `#0A0A1F` primary dark background with `#E50914` Netflix-red accent. |
+| **Particle System** | Canvas-based connecting particle lines in the hero with viewport resize hooks. |
+| **Glass Mockup Frames** | Screen mockup layouts utilizing glass glares and diagonal hover sweep animations. |
+| **Custom Cursor** | Spring-interpolated dot + ring mouse tracker with interactive hover expansions. |
+| **Gradient Text** | Smooth animated red gradient headers and branding elements. |
 
 ### Animations & Interactions
 
 | Feature | Description |
 |---------|-------------|
-| **Staggered Reveals** | IntersectionObserver-driven entrance animations with per-element delays |
-| **Magnetic Buttons** | Spring-interpolated hover displacement on CTA buttons |
-| **Ripple Effect** | Material-style click ripple on all buttons |
-| **Hero Glow Parallax** | Mouse + scroll combined parallax on background gradient orbs |
-| **Phone Float** | Subtle idle floating animation on the hero phone mockup |
-| **Marquee Ticker** | Auto-scrolling infinite marquee with pause-on-hover |
-| **Counter Animation** | easeOutExpo animated stat counters with suffix formatting |
-| **Pricing Toggle** | Animated monthly/annual price switch with spring bounce |
-| **Social Proof** | Auto-incrementing download counter with randomized intervals |
-
-### Sections
-
-| Section | Content |
-|---------|---------|
-| **Hero** | Badge, headline, subtitle, CTAs, stats, social proof, phone mockup |
-| **Features** | 6-card grid: Hero Carousel, 6,400+ Collections, Genre Filters, Multi-Type Search, My List, Glassmorphism UI |
-| **How It Works** | 3-step flow: Download → Browse → Watch |
-| **Screenshots** | 4 scrollable phone mockups: Home, Collections, Search, My List |
-| **Tech Stack** | 10 technology cards with icons, versions, and architecture stats |
-| **Pricing** | 3-tier pricing (Free/Standard/Family) with monthly/annual toggle |
-| **Testimonials** | 3 user review cards with star ratings and avatars |
-| **FAQ** | 6 expandable accordion items |
-| **Developer** | Developer profile card with social links |
-| **Support** | Buy Me a Coffee + GitHub Star CTAs |
-| **Download** | Final CTA with Google Play and APK download buttons |
-| **Footer** | 4-column footer with brand, product, developer, and support links |
-
-<br>
+| **Dynamic Mockup Switcher** | Hero mockup frame that updates active screenshot slides as you scroll sections or click controls. |
+| **Movie Search & Filter Simulator** | Client-side movie grid populated with mock data, enabling immediate search query updates and genre filters. |
+| **Pricing Switcher** | Toggles monthly vs annual pricing models with custom bounce transitions. |
+| **Accessible Accordion** | FAQ panels built with proper WAI-ARIA states, transitions, and keyboard controls. |
 
 ---
 
 ## Demo
 
-### Live Preview
-
-Open `index.html` in your browser — no server required.
-
+### Local Setup
+Run a local Vite server to preview the landing page:
 ```bash
-# Quick start
-open index.html
-
-# Or with a local server (recommended for best experience)
-npx serve .
-# → http://localhost:3000
+# Start development server
+npm run dev
+# → http://localhost:5173
 ```
 
 ### Key Interactions to Try
-
-1. **Move your mouse** over the hero — watch the glow orbs follow
-2. **Hover over cards** — experience the 3D tilt effect
-3. **Click the pricing toggle** — switch between monthly/annual pricing
-4. **Scroll down** — watch the phone mockup switch screens automatically
-5. **Try the custom cursor** — hover over interactive elements for the expanding ring
+1. **Explore the search grid** — type a query or click on genre buttons (e.g., "Sci-Fi").
+2. **Click the pricing switch** — see prices and discount tags change instantly.
+3. **Scroll the page** — watch the phone mockup swap screens as you hit sections.
+4. **Hover mockups and buttons** — feel the spring custom cursor react and watch diagonal shines sweep the screens.
 
 <br>
 
@@ -198,36 +165,14 @@ npx serve .
 
 | Technology | Purpose | Version |
 |:----------:|:-------:|:-------:|
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="28"> **HTML5** | Semantic markup + structured data | 5 |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="28"> **CSS3** | Glassmorphism, animations, responsive design | 3 |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="28"> **JavaScript** | Interactions, animations, DOM manipulation | ES2024 |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" width="28"> **Google Fonts** | Righteous (display) + Poppins (body) | Latest |
-| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg" width="28"> **Devicon** | Technology icons for the tech stack section | 2.16 |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" width="28"> **React** | Component-driven UI development | 18.2 |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" width="28"> **Vite** | Bundling and fast local development dev server | 4.4 |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" width="28"> **TypeScript** | Strict compile-time type safety | 5.0 |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" width="28"> **Tailwind CSS** | Custom styling, glassmorphism, and responsive utilities | 3.3 |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" width="28"> **Google Fonts** | Righteous (headers) + Poppins (body text) | Latest |
+| <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitest/vitest-original.svg" width="28"> **Vitest** | Fast component testing using jsdom environment | 4.1 |
 
 </div>
-
-### CSS Features Used
-
-- CSS Custom Properties (variables)
-- `backdrop-filter` for glassmorphism
-- `clamp()` for fluid typography
-- CSS Grid + Flexbox layouts
-- `@keyframes` animations
-- `prefers-reduced-motion` media query
-- `prefers-color-scheme` support
-- `:focus-visible` for keyboard navigation
-- CSS `scroll-behavior: smooth`
-- Custom scrollbar styling
-
-### JavaScript Features Used
-
-- `IntersectionObserver` for scroll-triggered animations
-- `requestAnimationFrame` for 60fps animations
-- `Canvas API` for particle system
-- `Performance.now()` for precise timing
-- `matchMedia` for reduced motion detection
-- Spring interpolation for smooth cursor/btn tracking
-- `easeOutExpo` easing function for counters
 
 <br>
 
@@ -237,19 +182,27 @@ npx serve .
 
 ```
 CINEFLIX-Page/
-├── index.html              # Main HTML — all sections, structured data, meta tags
-├── styles.css              # 2,000+ lines of premium CSS — variables, animations, responsive
-├── script.js               # 549 lines of vanilla JS — particles, observers, interactions
-├── README.md               # This file
-├── README.md-StandOut.txt  # Reference guide for GitHub README best practices
-└── assets/
-    ├── logo.png            # CINEFLIX logo
-    └── screenshots/
-        ├── home.jpg        # Home screen
-        ├── collections.jpg # Collections screen
-        ├── search.jpg      # Search screen
-        ├── mylist.jpg      # My List screen
-        └── account.jpg     # Account screen
+├── dist/                   # Bundled production static build output
+├── public/                 # Static assets (logo, screen images)
+├── src/
+│   ├── __tests__/          # Global test configuration and setup mocks
+│   ├── components/         # Modular React components
+│   │   ├── __tests__/      # Component-level unit and integration test suites
+│   │   ├── Accordion.tsx   # FAQ panels
+│   │   ├── Cursor.tsx      # Spring mouse follower
+│   │   ├── HeroParticles.tsx # Canvas interactive particles
+│   │   ├── MockupSwitcher.tsx # Phone frame slide switcher
+│   │   ├── MovieSearch.tsx # Interactive client-side search grid
+│   │   └── Pricing.tsx     # billing toggle switch
+│   ├── contexts/           # Global state contexts (MockupContext)
+│   ├── types/              # Type definitions (Movie structures)
+│   ├── App.tsx             # Main layout and section assemblies
+│   ├── index.css           # Global custom scrollbars and base CSS properties
+│   └── main.tsx            # Vite/React entry point
+├── package.json            # Scripts, dependencies, and dev dependencies
+├── tailwind.config.js      # Custom theme setup, animations, keyframes
+├── vite.config.ts          # Vite configurations
+└── vitest.config.ts        # Vitest configurations for JSDOM
 ```
 
 <br>
@@ -259,41 +212,36 @@ CINEFLIX-Page/
 ## Getting Started
 
 ### Prerequisites
-
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- No Node.js, npm, or build tools required
+- Node.js (v18 or higher recommended)
+- npm package manager
 
 ### Installation
 
-```bash
-### Clone the repository
-git clone https://github.com/simoabid/CINEFLIX-Page.git
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/simoabid/CINEFLIX-Page.git
+   cd CINEFLIX-Page
+   ```
 
-# Navigate to the project
-cd CINEFLIX-Page
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-# Open in browser
-open index.html          # macOS
-xdg-open index.html      # Linux
-start index.html         # Windows
-```
+3. **Start local development server:**
+   ```bash
+   npm run dev
+   ```
 
-### Local Development Server
+4. **Run automated Vitest test suite:**
+   ```bash
+   npm run test
+   ```
 
-For the best experience (especially for CORS-sensitive features):
-
-```bash
-# Using npx (no install needed)
-npx serve .
-
-# Using Python
-python -m http.server 8000
-
-# Using PHP
-php -S localhost:8000
-```
-
-Then visit `http://localhost:8000` in your browser.
+5. **Build production bundle:**
+   ```bash
+   npm run build
+   ```
 
 <br>
 
@@ -305,7 +253,7 @@ Then visit `http://localhost:8000` in your browser.
 
 | Home | Collections | Search | My List |
 |:----:|:----------:|:------:|:-------:|
-| <img src="assets/screenshots/home.jpg" width="200" style="border-radius:12px"> | <img src="assets/screenshots/collections.jpg" width="200" style="border-radius:12px"> | <img src="assets/screenshots/search.jpg" width="200" style="border-radius:12px"> | <img src="assets/screenshots/mylist.jpg" width="200" style="border-radius:12px"> |
+| <img src="public/assets/screenshots/home.jpg" width="200" style="border-radius:12px"> | <img src="public/assets/screenshots/collections.jpg" width="200" style="border-radius:12px"> | <img src="public/assets/screenshots/search.jpg" width="200" style="border-radius:12px"> | <img src="public/assets/screenshots/mylist.jpg" width="200" style="border-radius:12px"> |
 
 </div>
 
@@ -315,75 +263,23 @@ Then visit `http://localhost:8000` in your browser.
 
 ## Architecture
 
-### CSS Architecture
+### Component Design
+- **Single Level of Abstraction:** Components are broken down into self-contained files.
+- **Controlled Context:** Context providers manage shared state (like which section is active for the device mockup) so components are loosely coupled.
 
-```
-styles.css
-├── Reset & Base          # CSS reset, custom properties, typography
-├── Components            # Buttons, cards, badges, inputs
-├── Navigation            # Floating glassmorphism nav + mobile menu
-├── Hero                  # Full-viewport hero with phone mockup
-├── Sections              # Features, pricing, testimonials, FAQ
-├── Animations            # @keyframes, transitions, reveal system
-├── Responsive            # Breakpoints: 1024px, 768px, 480px
-└── Accessibility         # Reduced motion, focus states, scrollbar
-```
-
-### JavaScript Architecture
-
-```
-script.js
-├── Scroll Progress       # Percentage-based top bar
-├── Custom Cursor         # Spring-interpolated dot + ring
-├── Hero Particles        # Canvas-based particle system
-├── Entrance Orchestration # Staggered element reveals
-├── Glow Parallax         # Mouse + scroll combined effect
-├── Intersection Observer  # Scroll-triggered animations
-├── Animated Counters     # easeOutExpo stat animations
-├── 3D Tilt Cards         # Perspective transforms on hover
-├── Magnetic Buttons      # Spring-interpolated hover displacement
-├── Button Ripple         # Material-style click effect
-├── Pricing Toggle        # Animated price switching
-├── Phone Mockup          # Scroll-driven screenshot switching
-└── Social Proof          # Auto-incrementing counter
-```
-
-### Animation System
-
-All animations follow **Emil Kowalski's design engineering philosophy**:
-
-- **Strong easing**: `cubic-bezier(0.16, 1, 0.3, 1)` for snappy reveals
-- **Spring physics**: Interpolated cursor and button tracking
-- **Staggered timing**: Per-element delays for natural feel
-- **Reduced motion**: Full `prefers-reduced-motion` support
-- **60fps target**: `requestAnimationFrame` for all continuous animations
-- **GPU-accelerated**: `transform` and `opacity` only for animations
-
-<br>
+### Testing Strategy
+Built using JSDOM environment in Vitest to verify rendering behaviors:
+- **Pricing:** Verifies displayed currency and annual billing switches.
+- **Search Grid:** Validates search string inputs and genre button filters.
+- **Accordion:** Ensures proper WAI-ARIA values change on clicks.
 
 ---
 
 ## Performance
 
-### Optimization Techniques
-
-- **Zero dependencies** — no framework overhead, no bundle size
-- **Lazy loading** — `loading="lazy"` on all non-hero images
-- **Preconnect** — Google Fonts and CDNs preconnected in `<head>`
-- **Passive listeners** — all scroll handlers use `{ passive: true }`
-- **Canvas particles** — hardware-accelerated particle rendering
-- **IntersectionObserver** — no scroll-position polling for reveals
-- **CSS containment** — `will-change` hints for animated elements
-- **Reduced motion** — all animations disabled when user prefers
-
-### Lighthouse Scores (Expected)
-
-| Metric | Score |
-|--------|-------|
-| Performance | 95+ |
-| Accessibility | 95+ |
-| Best Practices | 100 |
-| SEO | 100 |
+- **Code Splitting & Bundling:** Handled by Vite and Esbuild for optimized bundle size.
+- **Asset Delivery:** Public directory holds optimized images. Non-hero images leverage lazy loading attributes.
+- **Hardware Acceleration:** Animations prioritize `transform` and `opacity` to keep renderings running at a smooth 60fps.
 
 <br>
 
@@ -391,34 +287,9 @@ All animations follow **Emil Kowalski's design engineering philosophy**:
 
 ## Accessibility
 
-### Built-in Features
-
-- **Skip to content** link for keyboard users
-- **Semantic HTML** — proper heading hierarchy, landmarks, and roles
-- **Focus-visible** — custom outline styles for keyboard navigation
-- **Reduced motion** — all animations respect `prefers-reduced-motion`
-- **Alt text** — descriptive alt attributes on all images
-- **ARIA labels** — on icon-only buttons and interactive elements
-- **Color contrast** — WCAG AA compliant text on dark backgrounds
-- **Touch targets** — minimum 44px hit areas on all interactive elements
-- **Screen reader** — `aria-hidden="true"` on decorative elements
-
-<br>
-
----
-
-## Browser Support
-
-| Browser | Version |
-|---------|---------|
-| Chrome | 90+ |
-| Firefox | 90+ |
-| Safari | 15+ |
-| Edge | 90+ |
-| Samsung Internet | 15+ |
-| Opera | 76+ |
-
-> **Note:** The glassmorphism `backdrop-filter` property has limited support in older browsers. The page remains fully functional without it — backgrounds will appear solid instead of translucent.
+- **Semantic HTML:** Utilizes appropriate document landmarks (`<header>`, `<main>`, `<section>`, `<footer>`).
+- **Keyboard Access:** Interactive elements support tab focus and outline highlights. The FAQ accordion listens to keyboard triggers.
+- **ARIA States:** Accordions track `aria-expanded` and `aria-controls` to match modern accessibility guidelines.
 
 <br>
 
@@ -426,16 +297,11 @@ All animations follow **Emil Kowalski's design engineering philosophy**:
 
 ## Roadmap
 
-- [ ] Add video demo section (currently commented out)
-- [ ] Newsletter backend integration (currently commented out)
+- [ ] Add video demo section
+- [ ] Newsletter backend integration
 - [ ] Add blog post workflow via GitHub Actions
-- [ ] Implement dark/light theme toggle
-- [ ] Add parallax scrolling for section backgrounds
-- [ ] Create animated SVG illustrations for feature cards
-- [ ] Add micro-interactions for FAQ accordion
 - [ ] Implement service worker for offline support
 - [ ] Add Open Graph image generation workflow
-- [ ] Create Playwright visual regression tests
 
 <br>
 
@@ -443,42 +309,15 @@ All animations follow **Emil Kowalski's design engineering philosophy**:
 
 ## Contributing
 
-Contributions are welcome! Here's how you can help:
+Contributions are welcome! Please follow these guidelines:
 
-### Ways to Contribute
-
-1. **Report bugs** — Open an issue with screenshots and steps to reproduce
-2. **Suggest features** — Share your ideas in the Discussions tab
-3. **Submit PRs** — Fork, branch, and submit a pull request
-4. **Improve docs** — Help make this README even better
-
-### Development Workflow
-
-```bash
-# 1. Fork the repository
-# 2. Clone your fork
-git clone https://github.com/YOUR_USERNAME/CINEFLIX-Page.git
-
-# 3. Create a feature branch
-git checkout -b feature/amazing-feature
-
-# 4. Make your changes
-# 5. Test across browsers and screen sizes
-
-# 6. Commit with conventional commits
-git commit -m "feat: add amazing feature"
-
-# 7. Push and open a PR
-git push origin feature/amazing-feature
-```
-
-### Code Style
-
-- Use **CSS custom properties** for all colors, spacing, and timing
-- Follow **BEM-like naming** for CSS classes
-- Keep **JavaScript vanilla** — no frameworks or libraries
-- Maintain **accessibility** — test with keyboard and screen reader
-- Respect **reduced motion** preferences
+1. Fork the repository and create your feature branch: `git checkout -b feature/amazing-feature`.
+2. Commit your changes using conventional commits: `git commit -m "feat: add amazing feature"`.
+3. Verify that all compiler checks and test runs pass cleanly before opening a PR:
+   ```bash
+   npm run test
+   npm run build
+   ```
 
 <br>
 
@@ -486,7 +325,7 @@ git push origin feature/amazing-feature
 
 ## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](https://github.com/simoabid/CINEFLIX-Page/blob/main/LICENSE) file for details.
+This project is licensed under the **MIT License** — see the `LICENSE` file for details.
 
 ```
 MIT License

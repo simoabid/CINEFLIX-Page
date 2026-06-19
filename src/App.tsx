@@ -1,0 +1,1037 @@
+import React, { useState, useEffect } from 'react';
+import { Cursor } from './components/Cursor';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { HeroParticles } from './components/HeroParticles';
+import { HeroGlow } from './components/HeroGlow';
+import { MockupSwitcher } from './components/MockupSwitcher';
+import { MockupProvider, useRegisterSection } from './contexts/MockupContext';
+import { MovieSearch } from './components/MovieSearch';
+import { Pricing } from './components/Pricing';
+import { Accordion } from './components/Accordion';
+
+// Simple Count-up Timer Component for statistics
+const Counter: React.FC<{ target: number; suffix?: string; duration?: number }> = ({ target, suffix = '', duration = 1500 }) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const end = target;
+    const stepTime = 20; // 50fps
+    const totalSteps = duration / stepTime;
+    const increment = end / totalSteps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [target, duration]);
+
+  return <span>{count.toLocaleString()}{suffix}</span>;
+};
+
+// Layout Coordinator wrapped in MockupProvider
+const AppContent: React.FC = () => {
+  const [scrollProgress, setScrollProgress] = useState(0);
+  
+  // Register sections for sticky mockup switcher
+  const heroRef = useRegisterSection('hero');
+  const featuresRef = useRegisterSection('features');
+  const howItWorksRef = useRegisterSection('how-it-works');
+  const screenshotsRef = useRegisterSection('screenshots');
+  const techRef = useRegisterSection('tech');
+
+  // Track scroll progress top bar
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        setScrollProgress((window.scrollY / totalHeight) * 100);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <div className="relative min-h-screen bg-background-primary text-white selection:bg-accent-red selection:text-white">
+      {/* SKIP LINK FOR ACCESSIBILITY */}
+      <a
+        href="#hero"
+        className="absolute left-6 -top-20 focus:top-6 bg-accent-red text-white py-2 px-6 rounded-lg font-semibold z-[9999] transition-all duration-300"
+      >
+        Skip to content
+      </a>
+
+      {/* SCROLL PROGRESS BAR */}
+      <div
+        className="fixed top-0 left-0 h-[3px] bg-accent-red z-[9999] transition-all duration-75 origin-left"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
+      {/* CUSTOM INTERACTIVE CURSOR */}
+      <Cursor />
+
+      {/* FIXED LIQUID GLASS NAVIGATION HEADER */}
+      <Header />
+
+      <main>
+        {/* HERO SECTION */}
+        <section
+          id="hero"
+          ref={heroRef}
+          className="relative min-h-screen pt-32 pb-20 flex items-center overflow-hidden"
+        >
+          {/* INTERACTIVE BACKDROP */}
+          <HeroParticles />
+          <HeroGlow />
+
+          <div className="max-w-[1200px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full relative z-10">
+            {/* Left Column: Text content */}
+            <div className="lg:col-span-7 space-y-6 text-center lg:text-left flex flex-col items-center lg:items-start">
+              <div className="inline-flex items-center gap-2 bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
+                CINEFLIX
+              </div>
+              
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-xl font-display">
+                Your Cinematic Universe,{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">
+                  Reinvented
+                </span>
+              </h1>
+              
+              <p className="text-gray-400 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed">
+                Dive into unlimited Movies & TV, more than 6,400+ collections. Track every marathon. Discover hidden gems. CINEFLIX is the Netflix-inspired experience you've been waiting for — built natively with React Native.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a
+                  href="#download"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-br from-accent-red to-accent-red-dark text-white rounded-xl py-3 px-6 font-semibold shadow-lg shadow-accent-red/25 hover:shadow-accent-red/40 hover:-translate-y-0.5 active:scale-97 transition-all duration-200 interactive-target"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Download Free
+                </a>
+                <a
+                  href="#content"
+                  className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white rounded-xl py-3 px-6 font-semibold hover:-translate-y-0.5 active:scale-97 transition-all duration-200 interactive-target"
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                  See It In Action
+                </a>
+              </div>
+
+              {/* Statistics Counters */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 w-full border-t border-white/5">
+                <div className="text-center lg:text-left">
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-white">
+                    <Counter target={6400} suffix="+" />
+                  </span>
+                  <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">Collections</span>
+                </div>
+                <div className="text-center lg:text-left">
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-white">
+                    <Counter target={16} />
+                  </span>
+                  <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">Genre Filters</span>
+                </div>
+                <div className="text-center lg:text-left">
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-white">
+                    <Counter target={100} suffix="%" />
+                  </span>
+                  <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">Free</span>
+                </div>
+                <div className="text-center lg:text-left">
+                  <span className="block text-2xl sm:text-3xl font-extrabold text-white font-sans">&infin;</span>
+                  <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">Movies & TV</span>
+                </div>
+              </div>
+
+              {/* Social Proof */}
+              <div className="flex items-center gap-2 pt-2 text-xs sm:text-sm text-gray-400">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span><span className="text-white font-semibold">12,847</span> people downloaded this week</span>
+              </div>
+            </div>
+
+            {/* Right Column: Sticky Mockup Frame Switcher */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <MockupSwitcher />
+            </div>
+          </div>
+        </section>
+
+        {/* INFINITE SCROLLING HIGHLIGHTS TICKER */}
+        <section className="bg-white/[0.02] py-5 border-y border-white/5 overflow-hidden">
+          <div className="flex w-max animate-marquee">
+            <div className="flex items-center gap-12 pr-12 text-sm text-gray-300 font-semibold tracking-wide">
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 fill-yellow-500" viewBox="0 0 24 24">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                4.8 Rating on Google Play
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Editor's Choice 2025
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+                5M+ Happy Users
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                #1 Streaming App in 12 Countries
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+                4K Ultra HD + Dolby Atmos
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Offline Downloads
+              </span>
+            </div>
+            {/* Duplicated track for loop */}
+            <div className="flex items-center gap-12 pr-12 text-sm text-gray-300 font-semibold tracking-wide" aria-hidden="true">
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 fill-yellow-500" viewBox="0 0 24 24">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                4.8 Rating on Google Play
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Editor's Choice 2025
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+                5M+ Happy Users
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+                #1 Streaming App in 12 Countries
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+                4K Ultra HD + Dolby Atmos
+              </span>
+              <span className="flex items-center gap-2 shrink-0">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                Offline Downloads
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* FEATURES GRID SECTION */}
+        <section
+          id="features"
+          ref={featuresRef}
+          className="py-24 bg-background-secondary relative"
+        >
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                Why CINEFLIX
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
+                Everything You Need to{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">
+                  Stream
+                </span>
+              </h2>
+              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+                Built for movie lovers who want the best experience on Android.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Feature 1 */}
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 11a9 9 0 0 1 9 9" />
+                    <path d="M4 4a16 16 0 0 1 16 16" />
+                    <circle cx="5" cy="19" r="1" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white">Hero Carousel</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Auto-rotating hero with backdrop images, logos, and gradient overlays for trending content on the home screen.
+                </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white">6,400+ Collections</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Infinite scroll discovery of TMDB collections with parallel API batch loading and smart deduplication.
+                </p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white">16 Genre Filters</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Filter chips for Action, Sci-Fi, Fantasy, Horror, Animation, Comedy, Drama, and more categories.
+                </p>
+              </div>
+
+              {/* Feature 4 */}
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white">Multi-Type Search</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Search movies, TV shows, and people in one query with debounced input and genre-based browsing.
+                </p>
+              </div>
+
+              {/* Feature 5 */}
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white">My List</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Watchlist management with persistent storage, filter chips, and long-press preview modals.
+                </p>
+              </div>
+
+              {/* Feature 6 */}
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                    <line x1="8" y1="21" x2="16" y2="21" />
+                    <line x1="12" y1="17" x2="12" y2="21" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold mb-3 text-white">Glassmorphism UI</h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  Premium deep navy glassmorphism throughout — every card, input, chip, and modal uses translucent backgrounds.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* HOW IT WORKS SECTION */}
+        <section
+          id="how-it-works"
+          ref={howItWorksRef}
+          className="py-24 bg-background-primary relative"
+        >
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                How It Works
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
+                Three Steps to <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Streaming</span>
+              </h2>
+              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+                Get started in under a minute. No account required for free plan.
+              </p>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12 md:gap-4 relative max-w-4xl mx-auto">
+              {/* Step 1 */}
+              <div className="flex flex-col items-center text-center space-y-4 max-w-xs relative z-10">
+                <span className="text-4xl sm:text-5xl font-extrabold text-white/5 font-display leading-none">01</span>
+                <div className="w-14 h-14 rounded-2xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-white">Download</h3>
+                <p className="text-gray-400 text-xs sm:text-sm">
+                  Get CINEFLIX from Google Play or sideload the APK directly. Just 45MB.
+                </p>
+              </div>
+
+              {/* Connector */}
+              <div className="hidden md:block shrink-0 opacity-20">
+                <svg width="60" height="2" viewBox="0 0 60 2">
+                  <line x1="0" y1="1" x2="60" y2="1" stroke="white" strokeWidth="2" strokeDasharray="6 4" />
+                </svg>
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex flex-col items-center text-center space-y-4 max-w-xs relative z-10">
+                <span className="text-4xl sm:text-5xl font-extrabold text-white/5 font-display leading-none">02</span>
+                <div className="w-14 h-14 rounded-2xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-white">Browse</h3>
+                <p className="text-gray-400 text-xs sm:text-sm">
+                  Explore 6,400+ collections across 16 genres. Search movies, shows, and people.
+                </p>
+              </div>
+
+              {/* Connector */}
+              <div className="hidden md:block shrink-0 opacity-20">
+                <svg width="60" height="2" viewBox="0 0 60 2">
+                  <line x1="0" y1="1" x2="60" y2="1" stroke="white" strokeWidth="2" strokeDasharray="6 4" />
+                </svg>
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex flex-col items-center text-center space-y-4 max-w-xs relative z-10">
+                <span className="text-4xl sm:text-5xl font-extrabold text-white/5 font-display leading-none">03</span>
+                <div className="w-14 h-14 rounded-2xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-white">Watch</h3>
+                <p className="text-gray-400 text-xs sm:text-sm">
+                  Stream in HD, download for offline viewing, and track your watchlist.
+                </p>
+              </div>
+            </div>
+
+            {/* INTEGRATED SEARCH SIMULATOR */}
+            <MovieSearch />
+          </div>
+        </section>
+
+        {/* SCREENSHOTS GALLERY SECTION */}
+        <section
+          id="content"
+          ref={screenshotsRef}
+          className="py-24 bg-background-secondary relative"
+        >
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                Screenshots
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
+                See CINEFLIX in <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Action</span>
+              </h2>
+              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+                Four core screens — Home, Collections, Search, and My List — all in premium glassmorphism.
+              </p>
+            </div>
+
+            {/* Screenshots Scroll */}
+            <div className="screenshots-scroll flex gap-6 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory scrollbar-thin">
+              {/* Home */}
+              <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
+                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                  {/* Glass Reflection Sheen */}
+                  <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
+
+                  {/* Hover Shine Sweep */}
+                  <div className="absolute inset-0 pointer-events-none z-25 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent -translate-x-full -translate-y-full group-hover/item:translate-x-full group-hover/item:translate-y-full transition-transform duration-1000 ease-out" />
+
+                  <img src="/assets/screenshots/home.jpg" alt="Home Screen" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <span className="text-sm font-semibold text-gray-300 transition-colors duration-200 group-hover/item:text-accent-red">Home</span>
+              </div>
+
+              {/* Collections */}
+              <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
+                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                  {/* Glass Reflection Sheen */}
+                  <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
+
+                  {/* Hover Shine Sweep */}
+                  <div className="absolute inset-0 pointer-events-none z-25 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent -translate-x-full -translate-y-full group-hover/item:translate-x-full group-hover/item:translate-y-full transition-transform duration-1000 ease-out" />
+
+                  <img src="/assets/screenshots/collections.jpg" alt="Collections Screen" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <span className="text-sm font-semibold text-gray-300 transition-colors duration-200 group-hover/item:text-accent-red">Collections</span>
+              </div>
+
+              {/* Search */}
+              <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
+                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                  {/* Glass Reflection Sheen */}
+                  <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
+
+                  {/* Hover Shine Sweep */}
+                  <div className="absolute inset-0 pointer-events-none z-25 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent -translate-x-full -translate-y-full group-hover/item:translate-x-full group-hover/item:translate-y-full transition-transform duration-1000 ease-out" />
+
+                  <img src="/assets/screenshots/search.jpg" alt="Search Screen" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <span className="text-sm font-semibold text-gray-300 transition-colors duration-200 group-hover/item:text-accent-red">Search</span>
+              </div>
+
+              {/* My List */}
+              <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
+                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                  {/* Glass Reflection Sheen */}
+                  <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
+
+                  {/* Hover Shine Sweep */}
+                  <div className="absolute inset-0 pointer-events-none z-25 bg-gradient-to-tr from-transparent via-white/[0.1] to-transparent -translate-x-full -translate-y-full group-hover/item:translate-x-full group-hover/item:translate-y-full transition-transform duration-1000 ease-out" />
+
+                  <img src="/assets/screenshots/mylist.jpg" alt="My List Screen" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <span className="text-sm font-semibold text-gray-300 transition-colors duration-200 group-hover/item:text-accent-red">My List</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* TECH STACK & METRICS SECTION */}
+        <section
+          id="tech"
+          ref={techRef}
+          className="py-24 bg-background-primary relative"
+        >
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                Built With
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
+                Powered by <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Modern Tech</span>
+              </h2>
+              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+                A carefully chosen stack for performance, type safety, and pixel-perfect UI.
+              </p>
+            </div>
+
+            {/* Tech stack grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border rounded-2xl p-6 flex items-start gap-4 transition-all duration-300 sm:col-span-2 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-blue-400">
+                  <i className="devicon-react-original text-2xl"></i>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="font-bold text-white text-sm">React Native</h4>
+                    <span className="bg-white/5 border border-white/10 text-gray-400 text-[9px] px-1.5 py-0.5 rounded">0.81.5</span>
+                  </div>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    Cross-platform mobile framework for building native Android & iOS apps from a single codebase.
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border rounded-2xl p-6 flex items-start gap-4 transition-all duration-300 sm:col-span-2 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0 text-white">
+                  <i className="devicon-react-original text-2xl"></i>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h4 className="font-bold text-white text-sm">Expo</h4>
+                    <span className="bg-white/5 border border-white/10 text-gray-400 text-[9px] px-1.5 py-0.5 rounded">SDK 54</span>
+                  </div>
+                  <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                    Development platform and toolchain for React Native with instant updates and easy builds.
+                  </p>
+                </div>
+              </div>
+
+              {/* Smaller Cards */}
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 text-blue-500">
+                  <i className="devicon-typescript-plain text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">TypeScript</h4>
+                  <span className="text-gray-500 text-xs">v5.9</span>
+                </div>
+              </div>
+
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center shrink-0 text-sky-400">
+                  <i className="devicon-tailwindcss-plain text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">NativeWind</h4>
+                  <span className="text-gray-500 text-xs">v4.2</span>
+                </div>
+              </div>
+
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center shrink-0 text-white">
+                  <i className="devicon-reactnavigation-original text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">Expo Router</h4>
+                  <span className="text-gray-500 text-xs">v6.0</span>
+                </div>
+              </div>
+
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-orange-500/10 border border-orange-500/20 flex items-center justify-center shrink-0 text-orange-500">
+                  <i className="devicon-swift-plain text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">Reanimated</h4>
+                  <span className="text-gray-500 text-xs">v4.1</span>
+                </div>
+              </div>
+
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400">
+                  <i className="devicon-mysql-plain text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">TMDB API</h4>
+                  <span className="text-gray-500 text-xs">v3 endpoint</span>
+                </div>
+              </div>
+
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center shrink-0 text-green-500">
+                  <i className="devicon-mongodb-plain text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">AsyncStorage</h4>
+                  <span className="text-gray-500 text-xs">v2.2</span>
+                </div>
+              </div>
+
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-green-600/10 border border-green-600/20 flex items-center justify-center shrink-0 text-green-400">
+                  <i className="devicon-nodejs-plain text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">Axios</h4>
+                  <span className="text-gray-500 text-xs">v1.13</span>
+                </div>
+              </div>
+
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-0.5">
+                <div className="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center shrink-0 text-yellow-400">
+                  <i className="devicon-javascript-plain text-2xl"></i>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm">Lucide Icons</h4>
+                  <span className="text-gray-500 text-xs">v0.562</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Architecture Metrics */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-12 border-t border-white/5 text-center">
+              <div>
+                <span className="block text-xl sm:text-2xl font-extrabold text-white">2,400+</span>
+                <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">Lines in TMDB Service</span>
+              </div>
+              <div>
+                <span className="block text-xl sm:text-2xl font-extrabold text-white">390+</span>
+                <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">TypeScript Types</span>
+              </div>
+              <div>
+                <span className="block text-xl sm:text-2xl font-extrabold text-white">60fps</span>
+                <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">Animations</span>
+              </div>
+              <div>
+                <span className="block text-xl sm:text-2xl font-extrabold text-white">20</span>
+                <span className="text-xs text-gray-500 font-medium uppercase tracking-wider">Concurrent API Calls</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* PRICING PLANS SECTION */}
+        <Pricing />
+
+        {/* TESTIMONIALS SECTION */}
+        <section className="py-24 bg-background-secondary relative">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                Reviews
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
+                Loved by <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Movies & TV enthusiasts</span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Testimonial 1 */}
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 sm:p-8 space-y-6 flex flex-col justify-between hover:border-glass-border-hover transition-colors duration-250">
+                <div className="space-y-4">
+                  {/* Stars */}
+                  <div className="flex gap-1 text-yellow-500">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed italic">
+                    "Best streaming app I've used on Android. The download feature is a lifesaver for my daily commute."
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                  <img
+                    src="https://i.pravatar.cc/80?u=sarah.k"
+                    alt="Sarah K."
+                    className="w-10 h-10 rounded-full border border-white/10"
+                  />
+                  <div>
+                    <span className="block text-white font-bold text-sm">Sarah K.</span>
+                    <span className="text-gray-500 text-xs">Standard Plan</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 2 */}
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 sm:p-8 space-y-6 flex flex-col justify-between hover:border-glass-border-hover transition-colors duration-250">
+                <div className="space-y-4">
+                  {/* Stars */}
+                  <div className="flex gap-1 text-yellow-500">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed italic">
+                    "The 4K quality is incredible. My kids love their profiles and I love the parental controls. Family plan is worth every penny."
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                  <img
+                    src="https://i.pravatar.cc/80?u=marcus.t"
+                    alt="Marcus T."
+                    className="w-10 h-10 rounded-full border border-white/10"
+                  />
+                  <div>
+                    <span className="block text-white font-bold text-sm">Marcus T.</span>
+                    <span className="text-gray-500 text-xs">Family Plan</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Testimonial 3 */}
+              <div className="bg-glass-card border border-glass-border rounded-2xl p-6 sm:p-8 space-y-6 flex flex-col justify-between hover:border-glass-border-hover transition-colors duration-250">
+                <div className="space-y-4">
+                  {/* Stars */}
+                  <div className="flex gap-1 text-yellow-500">
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                      </svg>
+                    ))}
+                  </div>
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed italic">
+                    "Switched from Netflix and haven't looked back. The AI recommendations are surprisingly good — always finds something I like."
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-white/5">
+                  <img
+                    src="https://i.pravatar.cc/80?u=aisha.r"
+                    alt="Aisha R."
+                    className="w-10 h-10 rounded-full border border-white/10"
+                  />
+                  <div>
+                    <span className="block text-white font-bold text-sm">Aisha R.</span>
+                    <span className="text-gray-500 text-xs">Standard Plan</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ACCORDION FAQ SECTION */}
+        <section className="py-24 bg-background-primary relative" id="faq">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                FAQ
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
+                Got <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Questions</span>?
+              </h2>
+              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+                Everything you need to know about CINEFLIX.
+              </p>
+            </div>
+
+            <Accordion />
+          </div>
+        </section>
+
+        {/* DEVELOPER DETAILS SECTION */}
+        <section className="py-24 bg-background-secondary relative" id="developer">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="text-center mb-16">
+              <span className="bg-accent-red/10 border border-accent-red/20 text-accent-red px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                The Developer
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
+                Built by <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">ABID.Dev</span>
+              </h2>
+              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+                A passionate full-stack developer from Morocco who turns coffee into code.
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto bg-glass-card border border-glass-border rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row gap-8 items-center md:items-start shadow-xl">
+              <img
+                src="https://avatars.githubusercontent.com/u/169913102?v=4"
+                alt="Mohamed Amine Abid"
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-2 border-white/10 shrink-0"
+              />
+              
+              <div className="flex-1 space-y-4 text-center md:text-left">
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-white font-display">ABID.Dev</h3>
+                  <p className="text-accent-red text-xs sm:text-sm font-semibold mt-1">
+                    Full-Stack Developer &middot; Software Engineering Student
+                  </p>
+                  <p className="text-gray-500 text-xs flex items-center justify-center md:justify-start gap-1 mt-2">
+                    <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Khenifra, Morocco
+                  </p>
+                </div>
+
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                  Specializing in React, Node.js, TypeScript, and modern web technologies. Building web apps, mobile apps, tools, and open-source projects. Currently learning the MERN stack and always exploring new technologies.
+                </p>
+
+                {/* Developer social links row */}
+                <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2 text-gray-400 text-xs font-semibold">
+                  <a
+                    href="https://abidev.dev"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 hover:text-white transition-colors interactive-target"
+                  >
+                    <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="2" y1="12" x2="22" y2="12" />
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                    Portfolio
+                  </a>
+
+                  <a
+                    href="https://github.com/simoabid"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 hover:text-white transition-colors interactive-target"
+                  >
+                    <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    GitHub
+                  </a>
+
+                  <a
+                    href="https://x.com/seemooabid"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 hover:text-white transition-colors interactive-target"
+                  >
+                    <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    X / Twitter
+                  </a>
+
+                  <a
+                    href="https://linkedin.com/in/mohamed-amine-abidd"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 hover:text-white transition-colors interactive-target"
+                  >
+                    <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                    </svg>
+                    LinkedIn
+                  </a>
+
+                  <a
+                    href="mailto:seemooabid@gmail.com"
+                    className="flex items-center gap-1.5 hover:text-white transition-colors interactive-target"
+                  >
+                    <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Coffee star section */}
+            <div className="max-w-4xl mx-auto mt-8 bg-glass-card border border-glass-border hover:border-glass-border-hover rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 transition-all duration-300">
+              <div className="flex items-center gap-4 shrink-0">
+                <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-bold text-white text-sm sm:text-base">Support CINEFLIX</h4>
+                  <p className="text-gray-500 text-xs sm:text-sm">Keep this open-source project alive.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4 w-full sm:w-auto">
+                <a
+                  href="https://www.buymeacoffee.com/seemoo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent-red to-accent-red-dark text-white rounded-xl py-3 px-5 text-sm font-semibold shadow-lg shadow-accent-red/20 hover:shadow-accent-red/35 active:scale-97 transition-all interactive-target"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                    <line x1="6" y1="1" x2="6" y2="4" />
+                    <line x1="10" y1="1" x2="10" y2="4" />
+                    <line x1="14" y1="1" x2="14" y2="4" />
+                  </svg>
+                  Buy Me a Coffee
+                </a>
+                <a
+                  href="https://github.com/simoabid/CINEFLIX-Mobile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white rounded-xl py-3 px-5 text-sm font-semibold active:scale-97 transition-all interactive-target"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                  Star on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* DOWNLOAD CTA BANNER SECTION */}
+        <section className="py-24 bg-background-primary relative" id="download">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="bg-gradient-to-br from-accent-red/20 via-background-secondary to-background-secondary border border-accent-red/20 rounded-3xl p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-2xl">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-accent-red rounded-full blur-[150px] opacity-10 -mr-20 -mt-20 pointer-events-none" />
+              
+              <div className="relative z-10 max-w-2xl space-y-6 text-center sm:text-left">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-display leading-tight">
+                  Ready to Start <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Streaming</span>?
+                </h2>
+                <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-lg">
+                  Download CINEFLIX free. No credit card needed for the free plan. Start discovering and streaming immediately.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center sm:justify-start">
+                  <a
+                    href="#"
+                    className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-accent-red to-accent-red-dark text-white rounded-xl py-3.5 px-6 font-semibold shadow-lg shadow-accent-red/25 hover:shadow-accent-red/40 hover:-translate-y-0.5 active:scale-97 transition-all duration-200 interactive-target"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+                      <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 1.33c.576.334.576 1.16 0 1.494l-2.302 1.33-2.533-2.533 2.533-2.621zM5.864 2.658L16.8 9.99l-2.302 2.302L5.864 2.658z" />
+                    </svg>
+                    Google Play
+                  </a>
+                  
+                  <a
+                    href="#"
+                    className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white rounded-xl py-3.5 px-6 font-semibold hover:-translate-y-0.5 active:scale-97 transition-all duration-200 interactive-target"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="shrink-0">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                    </svg>
+                    APK Download
+                  </a>
+                </div>
+
+                <p className="text-gray-500 text-[11px] sm:text-xs">
+                  Requires Android 8.0+ &middot; 45MB &middot; Available worldwide
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* FOOTER SECTION */}
+      <Footer />
+    </div>
+  );
+};
+
+// Wrapping AppContent inside Provider
+export default function App() {
+  return (
+    <MockupProvider>
+      <AppContent />
+    </MockupProvider>
+  );
+}
