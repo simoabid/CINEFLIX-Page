@@ -30,12 +30,10 @@ export const Header: React.FC = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 ${
-          isScrolled ? 'py-3' : 'py-5'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-[transform] duration-300 px-4 sm:px-6 py-4"
       >
         <div
-          className={`max-w-[1200px] mx-auto rounded-2xl py-3 px-6 sm:px-8 flex items-center justify-between transition-all duration-350 ${
+          className={`max-w-[1200px] mx-auto rounded-2xl py-3 px-6 sm:px-8 flex items-center justify-between transition-[background-color,border-color,box-shadow] duration-350 ${
             isScrolled
               ? 'bg-white/[0.06] backdrop-blur-xl border border-white/15 shadow-[0_12px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.1)]'
               : 'bg-white/[0.02] backdrop-blur-lg border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.03)]'
@@ -104,7 +102,7 @@ export const Header: React.FC = () => {
 
       {/* Mobile Drawer Overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-background-primary transition-all duration-500 md:hidden flex flex-col justify-center px-8 space-y-6 text-xl font-semibold ${
+        className={`fixed inset-0 z-40 bg-background-primary transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden flex flex-col justify-center px-8 space-y-6 text-xl font-semibold ${
           isMenuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full pointer-events-none'
         }`}
       >

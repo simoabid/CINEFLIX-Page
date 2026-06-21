@@ -45,7 +45,6 @@ export default {
         out: 'cubic-bezier(0.23, 1, 0.32, 1)',
         'in-out-custom': 'cubic-bezier(0.77, 0, 0.175, 1)',
         snappy: 'cubic-bezier(0.16, 1, 0.3, 1)',
-        bounce: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

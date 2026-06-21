@@ -71,7 +71,7 @@ export const Pricing: React.FC = () => {
             Pricing
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
-            Simple, Transparent <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Plans</span>
+            Simple, Transparent <span className="text-accent-red font-extrabold">Plans</span>
           </h2>
           <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
             Start free. Upgrade anytime. Cancel whenever.
@@ -95,7 +95,7 @@ export const Pricing: React.FC = () => {
             aria-label="Toggle annual pricing"
           >
             <div
-              className={`w-6 h-6 bg-accent-red rounded-full shadow-lg shadow-accent-red/35 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+              className={`w-6 h-6 bg-accent-red rounded-full shadow-lg shadow-accent-red/35 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 isAnnual ? 'translate-x-6' : 'translate-x-0'
               }`}
             />

@@ -103,12 +103,12 @@ const AppContent: React.FC = () => {
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight max-w-xl font-display">
                 Your Cinematic Universe,{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">
+                <span className="text-accent-red font-extrabold">
                   Reinvented
                 </span>
               </h1>
               
-              <p className="text-gray-400 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed">
+              <p className="text-gray-400 text-sm sm:text-base lg:text-lg max-w-[68ch] leading-relaxed">
                 Dive into unlimited Movies & TV, more than 6,400+ collections. Track every marathon. Discover hidden gems. CINEFLIX is the Netflix-inspired experience you've been waiting for — built natively with React Native.
               </p>
 
@@ -280,18 +280,18 @@ const AppContent: React.FC = () => {
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
                 Everything You Need to{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">
+                <span className="text-accent-red font-extrabold">
                   Stream
                 </span>
               </h2>
-              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+              <p className="text-gray-400 max-w-[68ch] mx-auto text-sm sm:text-base">
                 Built for movie lovers who want the best experience on Android.
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {/* Feature 1 */}
-              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-glow group">
                 <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M4 11a9 9 0 0 1 9 9" />
@@ -306,7 +306,7 @@ const AppContent: React.FC = () => {
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-glow group">
                 <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -321,7 +321,7 @@ const AppContent: React.FC = () => {
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-glow group">
                 <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
@@ -334,7 +334,7 @@ const AppContent: React.FC = () => {
               </div>
 
               {/* Feature 4 */}
-              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-glow group">
                 <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
@@ -348,7 +348,7 @@ const AppContent: React.FC = () => {
               </div>
 
               {/* Feature 5 */}
-              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-glow group">
                 <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
@@ -361,7 +361,7 @@ const AppContent: React.FC = () => {
               </div>
 
               {/* Feature 6 */}
-              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow group">
+              <div className="bg-glass-card hover:bg-glass-card-hover border border-glass-border hover:border-glass-border-hover rounded-xl p-8 transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:shadow-glow group">
                 <div className="w-12 h-12 rounded-xl bg-accent-red/10 border border-accent-red/20 flex items-center justify-center text-accent-red mb-6 group-hover:scale-110 transition-all">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -390,9 +390,9 @@ const AppContent: React.FC = () => {
                 How It Works
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
-                Three Steps to <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Streaming</span>
+                Three Steps to <span className="text-accent-red font-extrabold">Streaming</span>
               </h2>
-              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+              <p className="text-gray-400 max-w-[68ch] mx-auto text-sm sm:text-base">
                 Get started in under a minute. No account required for free plan.
               </p>
             </div>
@@ -475,9 +475,9 @@ const AppContent: React.FC = () => {
                 Screenshots
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
-                See CINEFLIX in <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Action</span>
+                See CINEFLIX in <span className="text-accent-red font-extrabold">Action</span>
               </h2>
-              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+              <p className="text-gray-400 max-w-[68ch] mx-auto text-sm sm:text-base">
                 Four core screens — Home, Collections, Search, and My List — all in premium glassmorphism.
               </p>
             </div>
@@ -486,7 +486,7 @@ const AppContent: React.FC = () => {
             <div className="screenshots-scroll flex gap-6 overflow-x-auto pb-8 pt-4 snap-x snap-mandatory scrollbar-thin">
               {/* Home */}
               <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
-                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                <div className="relative aspect-[9/19] w-full rounded-2xl border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
                   {/* Glass Reflection Sheen */}
                   <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
 
@@ -500,7 +500,7 @@ const AppContent: React.FC = () => {
 
               {/* Collections */}
               <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
-                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                <div className="relative aspect-[9/19] w-full rounded-2xl border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
                   {/* Glass Reflection Sheen */}
                   <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
 
@@ -514,7 +514,7 @@ const AppContent: React.FC = () => {
 
               {/* Search */}
               <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
-                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                <div className="relative aspect-[9/19] w-full rounded-2xl border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
                   {/* Glass Reflection Sheen */}
                   <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
 
@@ -528,7 +528,7 @@ const AppContent: React.FC = () => {
 
               {/* My List */}
               <div className="screenshot-item flex flex-col items-center gap-4 snap-center shrink-0 w-[240px] group/item">
-                <div className="relative aspect-[9/19] w-full rounded-[20px] border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
+                <div className="relative aspect-[9/19] w-full rounded-2xl border-[6px] border-slate-900 bg-slate-950 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] ring-1 ring-white/5 transition-all duration-355 hover:scale-[1.03] hover:shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_30px_rgba(229,9,20,0.15)] hover:border-slate-800">
                   {/* Glass Reflection Sheen */}
                   <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05]" />
 
@@ -555,9 +555,9 @@ const AppContent: React.FC = () => {
                 Built With
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
-                Powered by <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Modern Tech</span>
+                Powered by <span className="text-accent-red font-extrabold">Modern Tech</span>
               </h2>
-              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+              <p className="text-gray-400 max-w-[68ch] mx-auto text-sm sm:text-base">
                 A carefully chosen stack for performance, type safety, and pixel-perfect UI.
               </p>
             </div>
@@ -709,7 +709,7 @@ const AppContent: React.FC = () => {
                 Reviews
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
-                Loved by <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Movies & TV enthusiasts</span>
+                Loved by <span className="text-accent-red font-extrabold">Movies & TV enthusiasts</span>
               </h2>
             </div>
 
@@ -812,9 +812,9 @@ const AppContent: React.FC = () => {
                 FAQ
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
-                Got <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Questions</span>?
+                Got <span className="text-accent-red font-extrabold">Questions</span>?
               </h2>
-              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+              <p className="text-gray-400 max-w-[68ch] mx-auto text-sm sm:text-base">
                 Everything you need to know about CINEFLIX.
               </p>
             </div>
@@ -831,9 +831,9 @@ const AppContent: React.FC = () => {
                 The Developer
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold font-display mt-4 mb-2">
-                Built by <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">ABID.Dev</span>
+                Built by <span className="text-accent-red font-extrabold">ABID.Dev</span>
               </h2>
-              <p className="text-gray-400 max-w-lg mx-auto text-sm sm:text-base">
+              <p className="text-gray-400 max-w-[68ch] mx-auto text-sm sm:text-base">
                 A passionate full-stack developer from Morocco who turns coffee into code.
               </p>
             </div>
@@ -860,7 +860,7 @@ const AppContent: React.FC = () => {
                   </p>
                 </div>
 
-                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-[68ch]">
                   Specializing in React, Node.js, TypeScript, and modern web technologies. Building web apps, mobile apps, tools, and open-source projects. Currently learning the MERN stack and always exploring new technologies.
                 </p>
 
@@ -979,14 +979,14 @@ const AppContent: React.FC = () => {
         {/* DOWNLOAD CTA BANNER SECTION */}
         <section className="py-24 bg-background-primary relative" id="download">
           <div className="max-w-[1200px] mx-auto px-6">
-            <div className="bg-gradient-to-br from-accent-red/20 via-background-secondary to-background-secondary border border-accent-red/20 rounded-3xl p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-2xl">
+            <div className="bg-gradient-to-br from-accent-red/20 via-background-secondary to-background-secondary border border-accent-red/20 rounded-2xl p-8 sm:p-12 md:p-16 relative overflow-hidden shadow-2xl">
               <div className="absolute top-0 right-0 w-96 h-96 bg-accent-red rounded-full blur-[150px] opacity-10 -mr-20 -mt-20 pointer-events-none" />
               
               <div className="relative z-10 max-w-2xl space-y-6 text-center sm:text-left">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold font-display leading-tight">
-                  Ready to Start <span className="text-transparent bg-clip-text bg-gradient-to-br from-accent-red to-accent-red-dark">Streaming</span>?
+                  Ready to Start <span className="text-accent-red font-extrabold">Streaming</span>?
                 </h2>
-                <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-lg">
+                <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-[68ch]">
                   Download CINEFLIX free. No credit card needed for the free plan. Start discovering and streaming immediately.
                 </p>
 

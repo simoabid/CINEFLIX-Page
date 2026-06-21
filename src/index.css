@@ -93,3 +93,23 @@
 .screenshots-scroll::-webkit-scrollbar-thumb:hover {
   background: rgba(229, 9, 20, 0.5);
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .animate-marquee {
+    animation: none !important;
+  }
+
+  .animate-glow-drift-1,
+  .animate-glow-drift-2,
+  .animate-glow-drift-3 {
+    animation: none !important;
+  }
+}

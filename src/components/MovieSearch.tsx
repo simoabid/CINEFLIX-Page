@@ -4,15 +4,15 @@ import { Movie } from '../types/landing';
 const GENRES = ['All', 'Action', 'Sci-Fi', 'Fantasy', 'Horror', 'Comedy', 'Drama', 'Animation', 'Thriller', 'Mystery'];
 
 const MOCK_MOVIES: Movie[] = [
-  { id: '1', title: 'Interstellar', genres: ['Sci-Fi', 'Drama'], rating: 8.7, year: 2014, img: 'bg-gradient-to-br from-indigo-900 to-purple-900' },
+  { id: '1', title: 'Interstellar', genres: ['Sci-Fi', 'Drama'], rating: 8.7, year: 2014, img: 'bg-gradient-to-br from-red-950 to-zinc-900' },
   { id: '2', title: 'The Dark Knight', genres: ['Action', 'Drama', 'Thriller'], rating: 9.0, year: 2008, img: 'bg-gradient-to-br from-slate-900 to-zinc-800' },
-  { id: '3', title: 'Spirited Away', genres: ['Animation', 'Fantasy'], rating: 8.6, year: 2001, img: 'bg-gradient-to-br from-teal-900 to-amber-900' },
-  { id: '4', title: 'Inception', genres: ['Sci-Fi', 'Action'], rating: 8.8, year: 2010, img: 'bg-gradient-to-br from-blue-950 to-indigo-950' },
+  { id: '3', title: 'Spirited Away', genres: ['Animation', 'Fantasy'], rating: 8.6, year: 2001, img: 'bg-gradient-to-br from-amber-950 to-zinc-900' },
+  { id: '4', title: 'Inception', genres: ['Sci-Fi', 'Action'], rating: 8.8, year: 2010, img: 'bg-gradient-to-br from-zinc-900 to-zinc-950' },
   { id: '5', title: 'Get Out', genres: ['Horror', 'Mystery', 'Thriller'], rating: 7.8, year: 2017, img: 'bg-gradient-to-br from-red-950 to-neutral-900' },
   { id: '6', title: 'Superbad', genres: ['Comedy'], rating: 7.6, year: 2007, img: 'bg-gradient-to-br from-yellow-900 to-orange-900' },
-  { id: '7', title: 'Spider-Man: Into the Spider-Verse', genres: ['Animation', 'Action', 'Sci-Fi'], rating: 8.4, year: 2018, img: 'bg-gradient-to-br from-rose-900 to-violet-950' },
+  { id: '7', title: 'Spider-Man: Into the Spider-Verse', genres: ['Animation', 'Action', 'Sci-Fi'], rating: 8.4, year: 2018, img: 'bg-gradient-to-br from-red-900 to-red-950' },
   { id: '8', title: 'Parasite', genres: ['Drama', 'Thriller'], rating: 8.6, year: 2019, img: 'bg-gradient-to-br from-emerald-950 to-zinc-900' },
-  { id: '9', title: 'Blade Runner 2049', genres: ['Sci-Fi', 'Mystery'], rating: 8.0, year: 2017, img: 'bg-gradient-to-br from-cyan-950 to-pink-950' },
+  { id: '9', title: 'Blade Runner 2049', genres: ['Sci-Fi', 'Mystery'], rating: 8.0, year: 2017, img: 'bg-gradient-to-br from-red-950 to-neutral-900' },
 ];
 
 export const MovieSearch: React.FC = () => {
@@ -46,7 +46,7 @@ export const MovieSearch: React.FC = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search movies by title..."
-            className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 pl-11 text-white focus:outline-none focus:border-accent-red focus:ring-1 focus:ring-accent-red/30 transition-all placeholder-gray-500 text-sm"
+            className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 pl-11 text-white focus:outline-none focus:border-accent-red focus:ring-1 focus:ring-accent-red/30 transition-[border-color,box-shadow] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder-gray-500 text-sm"
           />
           <svg
             className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none"
@@ -97,7 +97,7 @@ export const MovieSearch: React.FC = () => {
               <div
                 key={movie.id}
                 style={{ animationDelay: `${index * 50}ms` }}
-                className="bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-xl overflow-hidden transition-all duration-300 group hover:-translate-y-1 shadow-md hover:shadow-xl hover:shadow-black/40 flex flex-col justify-between animate-fade-in-up"
+                className="bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-xl overflow-hidden transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group hover:-translate-y-1 shadow-md hover:shadow-xl hover:shadow-black/40 flex flex-col justify-between animate-fade-in-up"
               >
                 {/* Poster / Gradient Representation */}
                 <div className={`aspect-[4/3] ${movie.img} relative flex items-center justify-center p-4 overflow-hidden`}>

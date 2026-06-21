@@ -70,9 +70,8 @@ export function Cursor() {
       ringX += (mouseX - ringX) * 0.12;
       ringY += (mouseY - ringY) * 0.12;
       
-      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
-      ring.style.width = isHovering ? '52px' : '36px';
-      ring.style.height = isHovering ? '52px' : '36px';
+      const scale = isHovering ? 52 / 36 : 1;
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${scale})`;
       ring.style.borderColor = isHovering ? 'rgba(229, 9, 20, 0.6)' : 'rgba(229, 9, 20, 0.4)';
 
       animationFrameId = requestAnimationFrame(updatePosition);
@@ -97,7 +96,7 @@ export function Cursor() {
       />
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 border-2 border-accent-red/40 rounded-full pointer-events-none z-[9998] opacity-0 transition-[width,height,border-color,opacity] duration-200 ease-out"
+        className="fixed top-0 left-0 border-2 border-accent-red/40 rounded-full pointer-events-none z-[9998] opacity-0 transition-[border-color,opacity] duration-200 ease-out"
         style={{ width: '36px', height: '36px', transform: 'translate(-50%, -50%)' }}
       />
     </>
