@@ -3,7 +3,15 @@ import react from '@vitejs/plugin-react'
 import path from 'path'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'resolve-public-url',
+      transformIndexHtml(html) {
+        return html.replace(/%PUBLIC_URL%/g, '')
+      }
+    }
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -11,8 +19,8 @@ export default defineConfig({
   },
   server: {
     host: 'localhost',
-    port: 5173,
-    open: true,
+    port: 3000,
+    open: false,
   },
   build: {
     outDir: 'dist',
