@@ -74,7 +74,7 @@ export function HeroParticles() {
         const currentOpacity = this.baseOpacity + Math.sin(this.pulse) * 0.1;
         cContext.beginPath();
         cContext.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        cContext.fillStyle = `rgba(229, 9, 20, ${Math.max(0.02, currentOpacity)})`;
+        cContext.fillStyle = `rgba(255, 30, 39, ${Math.max(0.02, currentOpacity)})`;
         cContext.fill();
       }
     }
@@ -104,7 +104,7 @@ export function HeroParticles() {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(229, 9, 20, ${0.05 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(255, 30, 39, ${0.05 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }

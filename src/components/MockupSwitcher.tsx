@@ -17,7 +17,7 @@ export const MockupSwitcher: React.FC = () => {
       {/* Neon Aura behind mockup */}
       <div className="absolute w-[240px] xs:w-[260px] ssm:w-[280px] aspect-[9/19] bg-gradient-to-tr from-accent-red/25 via-transparent to-accent-red/5 blur-3xl rounded-2xl opacity-60 group-hover:opacity-90 group-hover:scale-[1.03] transition-all duration-500 pointer-events-none" />
 
-      <div className="phone-mockup relative w-[240px] xs:w-[260px] ssm:w-[280px] aspect-[9/19] rounded-2xl border-[8px] border-slate-900 bg-slate-950 p-2.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_50px_rgba(229,9,20,0.15)] ring-1 ring-white/10 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.95),0_0_60px_rgba(229,9,20,0.25)]">
+      <div className="phone-mockup relative w-[240px] xs:w-[260px] ssm:w-[280px] aspect-[9/19] rounded-2xl border-[8px] border-slate-900 bg-slate-950 p-2.5 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.9),0_0_50px_rgba(255,30,39,0.15)] ring-1 ring-white/10 transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_30px_70px_-10px_rgba(0,0,0,0.95),0_0_60px_rgba(255,30,39,0.25)]">
         <div className="phone-screen-real relative w-full h-full rounded-xl overflow-hidden bg-slate-950">
 
           {/* Glass Reflection Sheen */}

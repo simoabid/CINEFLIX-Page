@@ -104,7 +104,7 @@ export const Accordion: React.FC = () => {
               aria-labelledby={btnId}
               aria-hidden={!isOpen}
               className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-                isOpen ? 'grid-rows-[1fr] border-t border-white/5' : 'grid-rows-[0fr]'
+                isOpen ? 'grid-rows-[1fr] border-t border-glass-border' : 'grid-rows-[0fr]'
               }`}
             >
               <div className="overflow-hidden">

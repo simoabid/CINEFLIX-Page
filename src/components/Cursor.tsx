@@ -72,7 +72,7 @@ export function Cursor() {
       
       const scale = isHovering ? 52 / 36 : 1;
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${scale})`;
-      ring.style.borderColor = isHovering ? 'rgba(229, 9, 20, 0.6)' : 'rgba(229, 9, 20, 0.4)';
+      ring.style.borderColor = isHovering ? 'rgba(255, 30, 39, 0.6)' : 'rgba(255, 30, 39, 0.4)';
 
       animationFrameId = requestAnimationFrame(updatePosition);
     };
