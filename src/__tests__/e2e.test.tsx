@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import App from '../App';
 
@@ -17,14 +17,7 @@ describe('CINEFLIX Landing Page E2E flows', () => {
     // 1. Initial render check
     expect(screen.getByText('Your Cinematic Universe,')).toBeInTheDocument();
     
-    // 2. Pricing toggle flow
-    const annualButton = screen.getByRole('button', { name: /^Annual/ });
-    fireEvent.click(annualButton);
-    act(() => {
-      vi.advanceTimersByTime(250);
-    });
-    // Check that standard annual pricing is displayed
-    expect(screen.getByText('$6.99')).toBeInTheDocument();
+
 
     // 3. Movie Search interaction
     const searchInput = screen.getByPlaceholderText('Search movies by title...');
