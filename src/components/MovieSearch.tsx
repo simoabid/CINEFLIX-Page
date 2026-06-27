@@ -28,8 +28,8 @@ export const MovieSearch: React.FC = () => {
   }, [searchQuery, selectedGenre]);
 
   return (
-    <div className="bg-slate-900/50 backdrop-blur-md border border-white/5 p-6 sm:p-8 rounded-2xl max-w-4xl mx-auto my-12 shadow-2xl relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-accent-red/5 to-transparent pointer-events-none" />
+    <div className="bg-cardBg border border-cardBorder p-6 sm:p-8 rounded-2xl max-w-4xl mx-auto my-12 shadow-2xl relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-brand/5 to-transparent pointer-events-none" />
       
       <div className="relative z-10">
         <h3 className="text-xl font-bold mb-4 font-display text-white text-center sm:text-left">
@@ -46,7 +46,7 @@ export const MovieSearch: React.FC = () => {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search movies by title..."
-            className="w-full bg-slate-950/80 border border-white/10 rounded-xl px-4 py-3 pl-11 text-white focus:outline-none focus:border-accent-red focus:ring-1 focus:ring-accent-red/30 transition-[border-color,box-shadow] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder-gray-500 text-sm"
+            className="w-full bg-badgeBg border border-badgeBorder rounded-xl px-4 py-3 pl-11 text-white focus:outline-none focus:border-accent-red focus:ring-1 focus:ring-accent-red/30 transition-[border-color,box-shadow] duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder-gray-500 text-sm"
           />
           <svg
             className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 pointer-events-none"
@@ -81,7 +81,7 @@ export const MovieSearch: React.FC = () => {
                 className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 active:scale-95 ${
                   isActive
                     ? 'bg-accent-red text-white shadow-lg shadow-accent-red/25'
-                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                    : 'bg-badgeBg border border-badgeBorder text-gray-400 hover:bg-white/5 hover:text-white'
                 }`}
               >
                 {genre}
@@ -97,7 +97,7 @@ export const MovieSearch: React.FC = () => {
               <div
                 key={movie.id}
                 style={{ animationDelay: `${index * 50}ms` }}
-                className="bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-xl overflow-hidden transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group hover:-translate-y-1 shadow-md hover:shadow-xl hover:shadow-black/40 flex flex-col justify-between animate-fade-in-up"
+                className="bg-badgeBg border border-badgeBorder hover:border-cardBorderHover rounded-xl overflow-hidden transition-[background-color,border-color,transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group hover:-translate-y-1 shadow-md hover:shadow-xl hover:shadow-black/40 flex flex-col justify-between animate-fade-in-up"
               >
                 {/* Poster / Gradient Representation */}
                 <div className={`aspect-[4/3] ${movie.img} relative flex items-center justify-center p-4 overflow-hidden`}>
@@ -122,7 +122,7 @@ export const MovieSearch: React.FC = () => {
 
                 {/* Details */}
                 <div className="p-4 flex-1 flex flex-col justify-between">
-                  <h4 className="font-bold text-sm text-white group-hover:text-accent-red transition-colors truncate">
+                  <h4 className="font-bold font-display text-sm text-white group-hover:text-accent-red transition-colors truncate">
                     {movie.title}
                   </h4>
                   <div className="flex items-center justify-between mt-3 text-xs text-gray-400">
@@ -148,7 +148,7 @@ export const MovieSearch: React.FC = () => {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <h4 className="text-white font-bold text-base mb-1">No movies match your criteria</h4>
+              <h4 className="text-white font-bold font-display text-base mb-1">No movies match your criteria</h4>
               <p className="text-gray-500 text-sm">
                 Try searching for a different title or clearing your filters.
               </p>

@@ -62,8 +62,8 @@ export const Pricing: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-background-primary text-white relative" id="pricing">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(229,9,20,0.03),transparent_60%)] pointer-events-none" />
+    <section className="py-24 bg-transparent text-white relative" id="pricing">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,30,39,0.03),transparent_60%)] pointer-events-none" />
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center mb-12">
@@ -124,7 +124,7 @@ export const Pricing: React.FC = () => {
                 key={plan.id}
                 className={`bg-glass-card hover:bg-glass-card-hover border rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow relative flex flex-col justify-between min-h-[500px] ${
                   plan.isPopular
-                    ? 'border-accent-red shadow-[0_0_40px_rgba(229,9,20,0.1)]'
+                    ? 'border-accent-red shadow-[0_0_40px_rgba(255,30,39,0.1)]'
                     : 'border-glass-border hover:border-glass-border-hover'
                 }`}
               >
