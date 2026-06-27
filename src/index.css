@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-display {
+  font-family: 'Righteous', cursive !important;
+}
 
 @layer base {
   html {
     scroll-behavior: smooth;
     background-color: #0A0A1F;
     color: #ffffff;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
 
   body {
@@ -63,7 +69,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A1F;
+  background: #080808;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -86,12 +92,12 @@
 }
 
 .screenshots-scroll::-webkit-scrollbar-thumb {
-  background: rgba(229, 9, 20, 0.3);
+  background: rgba(255, 30, 39, 0.3);
   border-radius: 10px;
 }
 
 .screenshots-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(229, 9, 20, 0.5);
+  background: rgba(255, 30, 39, 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
