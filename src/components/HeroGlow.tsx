@@ -96,6 +96,24 @@ export function HeroGlow() {
         ref={glow3Ref}
         className="absolute w-[300px] h-[300px] bg-accent-red/60 rounded-full blur-[120px] opacity-8 top-[50%] left-[40%] pointer-events-none animate-glow-drift-3"
       />
+      <div
+        className="absolute w-[500px] h-[500px] bg-accent-red rounded-full blur-[120px] opacity-[0.12] top-[15%] -left-[200px] pointer-events-none animate-glow-drift-2"
+      />
+      <div
+        className="absolute w-[450px] h-[450px] bg-accent-red/90 rounded-full blur-[120px] opacity-[0.10] top-[30%] -right-[150px] pointer-events-none animate-glow-drift-3"
+      />
+      <div
+        className="absolute w-[350px] h-[350px] bg-accent-red/70 rounded-full blur-[125px] opacity-[0.08] top-[42%] -left-[100px] pointer-events-none animate-glow-drift-1"
+      />
+      <div
+        className="absolute w-[600px] h-[600px] bg-accent-red rounded-full blur-[130px] opacity-[0.12] top-[65%] -right-[200px] pointer-events-none animate-glow-drift-2"
+      />
+      <div
+        className="absolute w-[400px] h-[400px] bg-accent-red/80 rounded-full blur-[120px] opacity-[0.09] top-[78%] -left-[150px] pointer-events-none animate-glow-drift-3"
+      />
+      <div
+        className="absolute w-[550px] h-[550px] bg-accent-red/90 rounded-full blur-[120px] opacity-[0.11] top-[90%] -right-[150px] pointer-events-none animate-glow-drift-1"
+      />
     </div>
   );
 }
