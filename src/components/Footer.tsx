@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile"
+                  href="https://github.com/simoabid"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors interactive-target"
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/in/mohamed-amine-abidd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors interactive-target"
@@ -108,7 +108,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile/discussions"
+                  href="https://github.com/simoabid/cineflix-app/discussions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors flex items-center gap-1.5 interactive-target"
@@ -121,7 +121,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile/issues"
+                  href="https://github.com/simoabid/cineflix-app/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors flex items-center gap-1.5 interactive-target"
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile/blob/main/LICENSE"
+                  href="https://github.com/simoabid/cineflix-app/blob/main/LICENSE"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors flex items-center gap-1.5 interactive-target"
@@ -166,47 +166,47 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs sm:text-sm text-gray-400">
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile"
+                  href="https://github.com/simoabid/cineflix-app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors interactive-target"
                 >
-                  cineflix-org
+                  CINEFLIX GitHub Repo
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile"
+                  href="https://github.com/simoabid/cineflix-core"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors interactive-target"
                 >
-                  core repo
+                  CINEFLIX Core Repo
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile"
+                  href="https://github.com/simoabid/cineflix-cli"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors interactive-target"
                 >
-                  ui components
+                  CINEFLIX CLI Repo
                 </a>
               </li>
               <li>
                 <a
-                  href="https://github.com/simoabid/CINEFLIX-Mobile"
+                  href="https://github.com/simoabid/cineflix-docs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors interactive-target"
                 >
-                  docs markdown
+                  CINEFLIX Docs Repo
                 </a>
               </li>
               <li>
                 <a
-                  href="https://abidev.dev"
+                  href="https://cineflix.dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors flex items-center gap-1.5 interactive-target"
@@ -214,12 +214,12 @@ export const Footer: React.FC = () => {
                   <svg className="w-3.5 h-3.5 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
-                  docs.cineflix.cc
+                  docs.cineflix.dev
                 </a>
               </li>
               <li>
                 <a
-                  href="https://abidev.dev"
+                  href="https://cineflix.dev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-accent-red transition-colors flex items-center gap-1.5 interactive-target"
@@ -227,7 +227,7 @@ export const Footer: React.FC = () => {
                   <svg className="w-3.5 h-3.5 text-accent-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  ui.cineflix.cc
+                  cineflix.dev
                 </a>
               </li>
             </ul>
@@ -253,7 +253,7 @@ export const Footer: React.FC = () => {
               </svg>
             </a>
             <a
-              href="https://x.com"
+              href="https://x.com/@seemooabid"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors duration-200"
@@ -264,7 +264,7 @@ export const Footer: React.FC = () => {
               </svg>
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/mohamed-amine-abidd"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors duration-200"
