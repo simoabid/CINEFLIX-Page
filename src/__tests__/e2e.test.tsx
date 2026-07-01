@@ -16,29 +16,11 @@ describe('CINEFLIX Landing Page E2E flows', () => {
 
     // 1. Initial render check
     expect(screen.getByText('Your Cinematic Universe,')).toBeInTheDocument();
-    
 
-
-    // 3. Movie Search interaction
-    const searchInput = screen.getByPlaceholderText('Search movies by title...');
-    expect(screen.getByText('Interstellar')).toBeInTheDocument();
-
-    // Type "Inception"
-    fireEvent.change(searchInput, { target: { value: 'Inception' } });
-    expect(screen.getByText('Inception')).toBeInTheDocument();
-    expect(screen.queryByText('Interstellar')).not.toBeInTheDocument();
-
-    // Clear search
-    const clearButton = screen.getByRole('button', { name: /Clear search/i });
-    fireEvent.click(clearButton);
-    expect(screen.getByText('Interstellar')).toBeInTheDocument();
-
-    // Filter by Sci-Fi
-    const sciFiButton = screen.getByRole('button', { name: 'Sci-Fi' });
-    fireEvent.click(sciFiButton);
-    expect(screen.getByText('Interstellar')).toBeInTheDocument();
-    expect(screen.getByText('Inception')).toBeInTheDocument();
-    expect(screen.queryByText('The Dark Knight')).not.toBeInTheDocument();
+    // 3. Live app preview — embedded real cineflix.dev
+    const previewFrame = screen.getByTitle('CINEFLIX — live app preview');
+    expect(previewFrame).toHaveAttribute('src', 'https://cineflix.dev');
+    expect(previewFrame.tagName).toBe('IFRAME');
 
     // 4. FAQ Accordion interaction
     const faqQuestion = screen.getByRole('button', { name: /Is CINEFLIX really free\?/i });

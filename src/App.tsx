@@ -6,7 +6,7 @@ import { HeroParticles } from './components/HeroParticles';
 import { HeroGlow } from './components/HeroGlow';
 import { MockupSwitcher } from './components/MockupSwitcher';
 import { MockupProvider, useRegisterSection } from './contexts/MockupContext';
-import { MovieSearch } from './components/MovieSearch';
+import { AppPreview } from './components/AppPreview';
 import { Accordion } from './components/Accordion';
 
 // Simple Count-up Timer Component for statistics
@@ -531,8 +531,8 @@ const AppContent: React.FC = () => {
               </div>
             </div>
 
-            {/* INTEGRATED SEARCH SIMULATOR */}
-            <MovieSearch />
+            {/* LIVE APP PREVIEW — faithful recreation of cineflix.dev */}
+            <AppPreview />
           </div>
         </section>
 
