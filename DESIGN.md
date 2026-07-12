@@ -130,3 +130,9 @@ CineFlix is a premium, developer-focused, open-source companion for Movies & TV 
 
 ### Header Glassmorphism
 - **Navigation Bar:** Floating capsule utilizing a semi-transparent dark background combined with `backdrop-filter: blur(12px)` and a subtle bottom border (`1px solid rgba(255, 255, 255, 0.08)`) to float seamlessly over page content.
+
+### Browser Mockups (product UI)
+- Prefer **desktop browser chrome frames** (traffic lights + URL bar, ~16:10 content) for hero, deep-dives, and screenshot galleries.
+- Screenshots live under `public/assets/screenshots/web/` and should show the **web app** (not phone-only UI).
+- Scroll-linked mockup switching uses `MockupContext` section intersection observers.
+
