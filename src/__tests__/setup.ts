@@ -55,3 +55,22 @@ Object.defineProperty(window, 'scrollTo', {
   writable: true,
   value: vi.fn(),
 })
+
+// Mock ResizeObserver (required by Lenis dimensions)
+class MockResizeObserver {
+  observe = vi.fn()
+  unobserve = vi.fn()
+  disconnect = vi.fn()
+  constructor(_callback: ResizeObserverCallback) {
+    void _callback
+  }
+}
+Object.defineProperty(window, 'ResizeObserver', {
+  writable: true,
+  value: MockResizeObserver,
+})
+Object.defineProperty(globalThis, 'ResizeObserver', {
+  writable: true,
+  value: MockResizeObserver,
+})
+
