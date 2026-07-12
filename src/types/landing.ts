@@ -1,10 +1,20 @@
-export interface PricingPlan {
+import type { FeatureIcon, MockupSectionId } from '../config/site';
+
+export type { FeatureIcon, MockupSectionId };
+
+export interface NavLink {
   id: string;
-  name: string;
+  href: string;
+  label: string;
+}
+
+export interface FeatureItem {
+  icon: FeatureIcon;
+  title: string;
   description: string;
-  monthlyPrice: number;
-  annualPrice: number;
-  features: string[];
-  mutedFeatures?: string[];
-  isPopular?: boolean;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }

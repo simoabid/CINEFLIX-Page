@@ -16,10 +16,34 @@
     font-family: 'Inter', sans-serif;
   }
 
+  html[dir='rtl'] body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+  }
+
   body {
     overflow-x: hidden;
   }
+
+  /* Lenis smooth scroll root (from lenis/dist/lenis.css + extras) */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
 }
+
+
 
 @keyframes marquee {
   0% {
@@ -81,41 +105,72 @@
   background: rgba(255, 255, 255, 0.25);
 }
 
-/* Custom styles for screenshots scroll */
+/* Thumbnail rail scrollbar */
+.screenshots-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 30, 39, 0.35) transparent;
+}
+
 .screenshots-scroll::-webkit-scrollbar {
-  height: 6px;
+  height: 4px;
 }
 
 .screenshots-scroll::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 10px;
+  background: transparent;
 }
 
 .screenshots-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 30, 39, 0.3);
+  background: rgba(255, 30, 39, 0.35);
   border-radius: 10px;
 }
 
 .screenshots-scroll::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 30, 39, 0.5);
+  background: rgba(255, 30, 39, 0.55);
+}
+
+/* Product frame fade when switching featured screenshot */
+@keyframes productFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: productFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* GPU-friendly motion helpers */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Soft interactive link underline for footer / nav polish */
+.interactive-target {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation-delay: 0s !important;
-    animation-duration: 0s !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0s !important;
+  html {
     scroll-behavior: auto !important;
   }
-  
-  .animate-marquee {
+
+  .animate-marquee,
+  .animate-glow-drift-1,
+  .animate-glow-drift-2,
+  .animate-glow-drift-3,
+  .animate-fade-in,
+  .animate-pulse,
+  .animate-ping {
     animation: none !important;
   }
 
-  .animate-glow-drift-1,
-  .animate-glow-drift-2,
-  .animate-glow-drift-3 {
-    animation: none !important;
-  }
+  /* Let Framer Motion / GSAP hooks short-circuit via useReducedMotion;
+     avoid blanket * { transition: 0 } which fights intentional UI feedback. */
 }
+

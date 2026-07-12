@@ -1,58 +1,5 @@
 import React, { useState } from 'react';
-
-interface FAQItem {
-  question: string;
-  answer: string | React.ReactNode;
-}
-
-const FAQ_ITEMS: FAQItem[] = [
-  {
-    question: 'Is CINEFLIX really free?',
-    answer: 'Yes! CINEFLIX offers a free plan with access to the full TMDB library in 720p. No credit card required. You can upgrade to Standard or Family for 4K, offline downloads, and ad-free streaming.'
-  },
-  {
-    question: 'Does it work on iOS?',
-    answer: 'CINEFLIX is currently Android-only. An iOS version is on the roadmap — follow the GitHub repo for updates.'
-  },
-  {
-    question: 'Is it legal to stream content?',
-    answer: 'CINEFLIX uses the TMDB API for metadata and discovery. Actual streaming sources are publicly available. We comply with all TMDB attribution requirements.'
-  },
-  {
-    question: 'How do offline downloads work?',
-    answer: 'Standard and Family plan users can download movies and episodes for offline viewing. Downloads are stored locally on your device and available for 30 days.'
-  },
-  {
-    question: 'What devices are supported?',
-    answer: "CINEFLIX requires Android 8.0 or higher. It's optimized for phones and tablets. The app is just 45MB and runs smoothly on mid-range devices."
-  },
-  {
-    question: 'How can I report a bug or request a feature?',
-    answer: (
-      <span>
-        Open an issue on the{' '}
-        <a
-          href="https://github.com/simoabid/CINEFLIX-Mobile"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-accent-red hover:underline"
-        >
-          GitHub repository
-        </a>{' '}
-        or reach out on{' '}
-        <a
-          href="https://x.com/seemooabid"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-accent-red hover:underline"
-        >
-          X/Twitter
-        </a>
-        . We respond to all reports within 48 hours.
-      </span>
-    )
-  }
-];
+import { FAQ_ITEMS, SITE } from '../config/site';
 
 export const Accordion: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -67,10 +14,11 @@ export const Accordion: React.FC = () => {
         const isOpen = openIndex === idx;
         const btnId = `faq-btn-${idx}`;
         const panelId = `faq-panel-${idx}`;
+        const isLast = idx === FAQ_ITEMS.length - 1;
 
         return (
           <div
-            key={idx}
+            key={item.question}
             className="bg-glass-card border border-glass-border hover:border-glass-border-hover rounded-xl overflow-hidden transition-colors duration-300"
           >
             <h3>
@@ -80,7 +28,7 @@ export const Accordion: React.FC = () => {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => toggleIndex(idx)}
-                className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-semibold text-white hover:text-accent-red focus:text-accent-red transition-colors duration-200 focus:outline-none cursor-pointer text-sm sm:text-base"
+                className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left font-semibold text-white hover:text-accent-red focus-visible:text-accent-red transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-red/50 rounded-xl text-sm sm:text-base min-h-[56px]"
               >
                 <span>{item.question}</span>
                 <svg
@@ -91,13 +39,13 @@ export const Accordion: React.FC = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <polyline points="6 9 12 15 18 9" />
                 </svg>
               </button>
             </h3>
-            
-            {/* Accessible Expandable Panel */}
+
             <div
               id={panelId}
               role="region"
@@ -110,6 +58,29 @@ export const Accordion: React.FC = () => {
               <div className="overflow-hidden">
                 <div className="p-5 sm:p-6 text-xs sm:text-sm text-gray-400 leading-relaxed">
                   {item.answer}
+                  {isLast ? (
+                    <span className="block mt-3">
+                      Report issues on{' '}
+                      <a
+                        href={SITE.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-red hover:underline interactive-target"
+                      >
+                        GitHub
+                      </a>{' '}
+                      or reach out on{' '}
+                      <a
+                        href={SITE.author.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-accent-red hover:underline interactive-target"
+                      >
+                        X/Twitter
+                      </a>
+                      .
+                    </span>
+                  ) : null}
                 </div>
               </div>
             </div>

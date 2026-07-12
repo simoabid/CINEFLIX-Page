@@ -15,8 +15,10 @@ export function HeroParticles() {
     if (!ctx) return;
 
     let animationId: number;
-    const particleCount = 40;
+    // Keep particle count low — Lenis + motion already cost frames
+    const particleCount = window.innerWidth < 768 ? 10 : 22;
     const particles: Particle[] = [];
+
 
     const handleResize = () => {
       const parent = canvas.parentElement;
@@ -93,24 +95,7 @@ export function HeroParticles() {
         p.draw(ctx);
       });
 
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(255, 30, 39, ${0.05 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-
+      // Skip O(n²) connection lines — too expensive with Lenis + Framer
       animationId = requestAnimationFrame(animate);
     };
 

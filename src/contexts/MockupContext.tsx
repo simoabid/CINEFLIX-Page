@@ -1,7 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import type { MockupSectionId } from '../config/site';
 
-export type SectionType = 'hero' | 'features' | 'how-it-works' | 'screenshots' | 'tech';
+export type SectionType = MockupSectionId;
 
 interface MockupContextType {
   activeSection: SectionType;
@@ -47,7 +48,7 @@ export const useRegisterSection = (section: SectionType) => {
       {
         rootMargin: '-20% 0px -40% 0px',
         threshold: 0.15,
-      }
+      },
     );
 
     observer.observe(el);
