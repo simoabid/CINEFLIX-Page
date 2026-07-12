@@ -15,7 +15,8 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "theme_color": "#0A0A1F",
+  "background_color": "#0A0A1F",
+  "display": "standalone",
+  "description": "CINEFLIX — open-source streaming & discovery web platform"
 }

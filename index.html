@@ -3,51 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CINEFLIX — Unlimited Movies & Shows</title>
-  <meta name="description" content="Your premium movie and TV companion. Discover, stream, collect, and track — powered by TMDB. Built with React Native + Expo.">
-  
-  <!-- OpenGraph / Facebook -->
-  <meta property="og:title" content="CINEFLIX — Unlimited Movies & Shows">
-  <meta property="og:description" content="Your premium movie and TV companion. Discover, stream, collect, and track.">
-  <meta property="og:image" content="/assets/og-image.png">
+  <title>CINEFLIX — Stream, Discover & Watch Together</title>
+  <meta name="description" content="Premium open-source streaming & discovery web app. 6,400+ collections, Smart Player with 50+ sources, watch parties, My List, and secure accounts.">
+  <meta name="theme-color" content="#0A0A1F">
+  <link rel="canonical" href="https://cineflix.dev">
+
+  <!-- Open Graph — absolute image URLs work best for Discord / Slack / iMessage -->
+  <meta property="og:site_name" content="CINEFLIX">
+  <meta property="og:title" content="CINEFLIX — Stream, Discover & Watch Together">
+  <meta property="og:description" content="Open-source web platform for movies & TV — Smart Player, 6,400+ collections, watch parties, and secure accounts.">
+  <meta property="og:image" content="https://cineflix.dev/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CINEFLIX web app home screen">
   <meta property="og:type" content="website">
-  
-  <!-- Twitter -->
+  <meta property="og:url" content="https://cineflix.dev">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="ar_AR">
+
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  
+  <meta name="twitter:title" content="CINEFLIX — Stream, Discover & Watch Together">
+  <meta name="twitter:description" content="Open-source streaming & discovery web app — Smart Player, collections, watch parties.">
+  <meta name="twitter:image" content="https://cineflix.dev/assets/og-image.png">
+  <meta name="twitter:image:alt" content="CINEFLIX web app">
+
+  <link rel="alternate" hreflang="en" href="https://cineflix.dev/?lang=en" />
+  <link rel="alternate" hreflang="fr" href="https://cineflix.dev/?lang=fr" />
+  <link rel="alternate" hreflang="ar" href="https://cineflix.dev/?lang=ar" />
+  <link rel="alternate" hreflang="x-default" href="https://cineflix.dev/" />
+
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="CINEFLIX" />
   <link rel="manifest" href="/site.webmanifest" />
-  
-  <!-- JSON-LD Structured Data -->
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "WebApplication",
     "name": "CINEFLIX",
-    "operatingSystem": "Android",
     "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern evergreen browser with JavaScript enabled",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "description": "Your premium movie and TV companion. Discover, stream, collect, and track — powered by TMDB.",
-    "author": { "@type": "Person", "name": "ABID.Dev" },
-    "url": "https://github.com/simoabid/CINEFLIX-Mobile"
+    "description": "Premium open-source streaming and discovery web platform for movies and TV shows.",
+    "url": "https://cineflix.dev",
+    "image": "https://cineflix.dev/assets/og-image.png",
+    "author": { "@type": "Person", "name": "Mohamed Amine Abid", "url": "https://abidev.dev" },
+    "codeRepository": "https://github.com/simoabid/cineflix-app",
+    "inLanguage": ["en", "fr", "ar"]
   }
   </script>
-  
-  <!-- Fonts and Icon Packages -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon@2.16.0/devicon.min.css">
+  <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin>
+  <link rel="preconnect" href="https://api.github.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Inter:wght@300;400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-background-primary text-white">
-  <!-- React App Mount Point -->
   <div id="root"></div>
-  
   <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
